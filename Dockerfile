@@ -162,14 +162,14 @@ RUN yum update -y \
     cd /usr/src/bcg729 && \
     git checkout tags/$BCG729_VERSION && \
     ./autogen.sh && \
-    ./configure --prefix=/usr --libdir=/lib && \
+    ./configure --prefix=/usr --libdir=/lib64 && \
     make && \
     make install && \
 	mkdir -p /usr/src/asterisk-g72x && \
     curl https://bitbucket.org/arkadi/asterisk-g72x/get/master.tar.gz | tar xvfz - --strip 1 -C /usr/src/asterisk-g72x && \
     cd /usr/src/asterisk-g72x && \
     ./autogen.sh && \
-    ./configure --prefix=/usr --with-asterisk-includes=/usr/src/asterisk/include --with-bcg729 --enable-$G72X_CPUHOST && \
+    ./configure --prefix=/usr --libdir=/lib64 --with-asterisk-includes=/usr/src/asterisk/include --with-bcg729 --enable-$G72X_CPUHOST && \
     make && \
     make install \
     # Update max number of open files.
